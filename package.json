@@ -32,7 +32,11 @@
     "grunt-karma": "^0.8.3",
     "karma": "^0.12.16",
     "karma-ng-html2js-preprocessor": "^0.1.0",
-    "assemble": "*"
+    "assemble": "*",
+    "lodash": "*",
+    "fs-utils": "*",
+    "gray-matter": "*",
+    "relative": "^0.1.2"
   },
   "engines": {
     "node": ">=0.8.0"

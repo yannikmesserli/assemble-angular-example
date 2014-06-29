@@ -277,7 +277,7 @@ module.exports = function (grunt) {
             expand: true,
             cwd: '.tmp/',
             dest: '<%= yeoman.dist %>',
-            src: ['{,*/}*.html']
+            src: ['{,*/}{,*/}*.html']
           }
         ]
       },
@@ -340,16 +340,32 @@ module.exports = function (grunt) {
 
     assemble: {
       options: {
-        flatten: true,
         layout: 'layout.hbs',
         layoutdir: '<%= yeoman.app %>/templates/layouts',
         // assets: 'dist/images',
         partials: ['<%= yeoman.app %>/templates/partials/*.hbs']
       },
       dist: {
+        options: {
+          flatten: true
+        },
         files: {
           '.tmp/': ['<%= yeoman.app %>/templates/pages/*.hbs', '<%= yeoman.app %>/index.hbs']
         } 
+      },
+      blog: {
+        options: {
+          flatten: false,
+          layout: 'blog.hbs',
+          plugins: ['./<%= yeoman.app %>/plugins/pagination.js'],
+          pagination: {
+            src: ['<%= yeoman.app %>/templates/posts/**/*.hbs'],
+            per_page: 3,
+            dest: 'blog/'
+          }
+        },
+        dest: '.tmp/',
+        src: '!*.*'
       }
     }
   });
@@ -389,6 +405,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'bower-install',
     'assemble:dist',
+    'assemble:blog',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
