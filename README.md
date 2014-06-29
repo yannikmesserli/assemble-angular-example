@@ -5,7 +5,7 @@ This project shows how to integrate the nice [Assemble](http://assemble.io/) pro
 - `usemin` and `useminPrepare` tasks: to keep the assets consistants accross the pages.
 - `bower:install` and the `yo` scaffolders to keep them in the loop with new structure.
 
-I opted for a general layout `layout.hbs` to act as the main point (much like `index.html` before) that each page will inherits assets and scripts. 
+I opted for a general layout `layout.hbs` to act as the main point (much like `index.html` before) that each page will inherits assets and scripts. I removed the `htmlmin` task, because I hate it. (It never works really as expected) 
 
 ## Unsolved problems:
 
